@@ -156,15 +156,17 @@ void layeOrder(Node *root) {
     Queue *q = getQueue(max_op + 5);
     push(q, root);
     while (!empty(q)) {
+        Node *tmp = top(q);
         int start = q->head, end = q->tail;
-        for (int i = start; i < end; i++) {
-            if (q->data[i]->lchild) push(q, q->data[i]->lchild);
-            if (q->data[i]->rchild) push(q, q->data[i]->rchild);
+        printf("%d => ", tmp->key);
+//        for (int i = start; i < end; i++) {
+            if (tmp->lchild) push(q, tmp->lchild);
+            if (tmp->rchild) push(q, tmp->rchild);
             pop(q);
-        }
+  //      }
     }
 
-    for (int i = 0; i < q->tail; i++) printf("%d => ", q->data[i]->key);
+    //for (int i = 0; i < q->tail; i++) printf("%d => ", q->data[i]->key);
     clearQueue(q);
     return ;
 }
