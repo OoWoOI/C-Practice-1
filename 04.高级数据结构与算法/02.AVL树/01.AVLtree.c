@@ -24,6 +24,13 @@ Node *getNewNode(int val) {
     return p;
 }//获取新节点
 
+//插入
+
+//遍历
+void output(Node *root) {
+    
+
+}
 
 void clear(Node *root) {
     if (root == NULL) return ;
