@@ -49,8 +49,8 @@ void in_order(Node *root) {
 Node *pre = NULL;
 //线索化建立
 void build_thread(Node *root) {
-    if (root == NULL) return ;
-    
+    if (root == NULL) return ; 
+    build_thread(root->lchild);
     if (root->lchild == NULL) {
         root->lchild = pre;
         root->ltag = THREAD;
@@ -60,17 +60,10 @@ void build_thread(Node *root) {
         pre->rtag = THREAD;
     }
     pre = root; 
-    if(root->ltag == NORMAL) build_thread(root->lchild);
-    if(root->rtag == NORMAL) build_thread(root->rchild);
+    build_thread(root->rchild);
     return ;
 }
 
-//找前驱
-Node* most_left(Node *root) {
-    Node *p = root;
-    while (p && p->ltag == NORMAL && p->lchild) p = p->lchild;
-    return p;
-}
 //输出
 void output(Node* root) {
     if (root == NULL) return;
@@ -81,9 +74,8 @@ void output(Node* root) {
             p = p->lchild;
             printf("%d ", p->key);
         }
-        while ( p->rtag == THREAD) {
+        while (p->rtag == THREAD) {
             p = p->rchild;
-            printf("%d ", p->key);
         }
         p = p->rchild;
     }
