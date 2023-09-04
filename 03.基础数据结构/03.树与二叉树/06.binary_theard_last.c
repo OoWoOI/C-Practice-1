@@ -74,18 +74,32 @@ void lastOrderByDef(Node *root) {
     return ;
 }
 
-Node* most_right(Node *root) {
+Node* most_left(Node *root) {
     Node *p = root;
-    while (p && p->rtag == NORMAL && p->rchild) p = p->rchild;
+    while (p && p->ltag == NORMAL && p->lchild) p = p->lchild;
     return p;
 }
 
 void lastOrderByThread(Node *root) {
     if (root == NULL) return ;
-   Node *p = root; 
+    Node *p = root, *pre = NULL;
     while (p) {
-        p = p->rchild;
+        if (p->rtag == THREAD || p->rchild == NULL) {
+            printf("%d ", p->key);
+            p = p->rchild;
+        } else {
+            pre = p->rchild;
+            while (pre->ltag == NORMAL && pre->lchild) {
+                pre = pre->lchild;
+            }
+            if (pre->ltag == NORMAL) {
+                pre->lchild = p;
+                p = p->rchild;
+            }
+        }
+
     }
+
     return ;
 }
 
