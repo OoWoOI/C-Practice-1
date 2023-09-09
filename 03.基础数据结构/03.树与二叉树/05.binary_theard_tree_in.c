@@ -93,9 +93,9 @@ int main() {
     srand(time(0));
     #define max 20
     Node *root = NULL;
-    int ans[10] = {10, 8, 12, 7, 9, 5, 11, 13};
-    for (int i = 0; i < 8; i++) {
-       root = insert(root, ans[i]);
+  //  int ans[10] = {10, 8, 12, 7, 9, 5, 11, 13};
+    for (int i = 0; i < max; i++) {
+       root = insert(root, rand() % 100);
     }
     in_order(root), printf("\n");
     //线索化建立
