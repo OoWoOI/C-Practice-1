@@ -45,22 +45,22 @@ void in_order(Node *root) {
     if (root->rtag == NORMAL) in_order(root->rchild);
     return ;
 }
-
-Node *pre = NULL;
 //线索化建立
 void build_thread(Node *root) {
     if (root == NULL) return ; 
-    build_thread(root->lchild);
+    static Node *pre = NULL;  
     if (root->lchild == NULL) {
         root->lchild = pre;
         root->ltag = THREAD;
     }
+
     if (pre && pre->rchild == NULL) {
         pre->rchild = root;
         pre->rtag = THREAD;
     }
-    pre = root; 
-    build_thread(root->rchild);
+    pre = root;
+    if (root->ltag == NORMAL) build_thread(root->lchild);
+   if (root->rtag == NORMAL) build_thread(root->rchild);
     return ;
 }
 
@@ -70,14 +70,11 @@ void output(Node* root) {
     Node *p = root;
     while (p) {
         printf("%d ", p->key);
-        while ( p->ltag == NORMAL) {
+        if (p->ltag == NORMAL) {
             p = p->lchild;
-            printf("%d ", p->key);
-        }
-        while (p->rtag == THREAD) {
+        } else {
             p = p->rchild;
         }
-        p = p->rchild;
     }
     return ;
 }
@@ -96,8 +93,9 @@ int main() {
     srand(time(0));
     #define max 20
     Node *root = NULL;
-    for (int i = 0; i < max; i++) {
-       root = insert(root, rand() % 100);
+    int ans[10] = {10, 8, 12, 7, 9, 5, 11, 13};
+    for (int i = 0; i < 8; i++) {
+       root = insert(root, ans[i]);
     }
     in_order(root), printf("\n");
     //线索化建立
