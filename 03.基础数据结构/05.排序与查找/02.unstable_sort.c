@@ -96,6 +96,16 @@ void select_sort(int *nums, int n) {
 }
 
 //希尔排序
+void hell_sort(int *nums, int n) {
+    for (int step = n / 2; step > 0; step /= 2) {
+        for (int i = step; i < n; i++) {
+            int temp = nums[i];
+            int j;
+        
+        }
+    }
+    return 0;
+}
 
 
 int main () {
