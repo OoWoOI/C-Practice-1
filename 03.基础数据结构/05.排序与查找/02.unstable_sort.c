@@ -82,6 +82,22 @@ void heap_sort(int *nums, int n) {
     return;
 }
 
+//选择排序
+void select_sort(int *nums, int n) {
+    for (int i = 0; i < n; i++) {
+        int min = i;
+        for (int j = i + 1; j < n; j++) {
+            min = nums[min] > nums[j] ? j : min;
+        }
+        if (min != i) swap(nums[i], nums[min]);
+    }
+
+    return ;
+}
+
+//希尔排序
+
+
 int main () {
     srand(time(0));
     #define max_op 13
@@ -97,6 +113,7 @@ int main () {
     printf("\n");
     TEST(num, quick_sort, max_op, nums, 0, max_op - 1);
     TEST(num, heap_sort, max_op, nums, max_op);
+    TEST(num, select_sort, max_op, nums, max_op);
     #undef max_op
 
     return 0;
