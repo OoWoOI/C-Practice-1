@@ -66,7 +66,6 @@ void merge_sort(int *nums, int l, int r) {
         } 
         return ;
     }
-    
     //分治
     int mid = (l + r + 1) / 2;
     merge_sort(nums, l, mid);
@@ -80,13 +79,46 @@ void merge_sort(int *nums, int l, int r) {
         } else {
             tmp[k++] = nums[y++];
         }
-    }
-    
+    } 
     while (x <= mid) tmp[k++] = nums[x++];
     while (y <= r) tmp[k++] = nums[y++];
-
     memcpy(nums + l, tmp, sizeof(int) * (r - l + 1));
     free(tmp);
+    return ;
+}
+
+//基数排序
+
+
+//计数排序
+void count_sort(int *nums, int n) {
+    //获取最大的元素
+    int max = nums[0];
+    for (int i = 0; i < n; i++) {
+        max = max > nums[i] ? max : nums[i];
+    }
+    
+    int couting[max + 5];
+    //初始化
+    memset(couting, -1, sizeof(int) * (max + 5));
+    
+    //统计
+    for (int i = 0; i < n; i++) {
+        if (couting[nums[i]] == -1) {
+            couting[nums[i]] = 1;
+        } else {
+            couting[nums[i]]++;
+        }
+    }
+    
+    int cnt = 0;
+    for (int i = 0; i <= max; i++) {
+        while (couting[i]  >= 1) {
+            nums[cnt++] =  i;
+            couting[i]--;
+        }
+    }
+
     return ;
 }
 
@@ -100,6 +132,7 @@ int main() {
     TEST(num, bubble_sort, max_op, nums, max_op);
     TEST(num, insert_sort, max_op, nums, max_op);
     TEST(num, merge_sort, max_op, nums, 0, max_op - 1);
+    TEST(num, count_sort, max_op, nums, max_op);
     #undef max_op
     return 0; 
 }
