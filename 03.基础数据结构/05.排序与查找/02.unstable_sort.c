@@ -78,6 +78,7 @@ void heap_sort(int *nums, int n) {
 
     //复制
     memcpy(nums, ret + 1, sizeof(int) * n);
+    free(ret);//释放内存
     return;
 }
 
