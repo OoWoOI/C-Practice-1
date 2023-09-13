@@ -28,7 +28,7 @@
     __typeof(a) __tmp = a; a = b; b = __tmp;\
 }
 
-//稳定排序：冒泡、插入、希尔、基数
+//稳定排序：冒泡、插入、希尔、基数、计数
 
 void bubble_sort(int *nums, int n) {
     //冒泡排序
