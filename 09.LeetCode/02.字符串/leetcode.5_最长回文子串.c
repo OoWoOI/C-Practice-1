@@ -29,7 +29,7 @@ int isPalind(char *s, int start, int end) {
     return flag;
 }
 
-/**
+///**
 
 //暴力解法
 char *longestPalindrome(char *s) {
@@ -51,7 +51,7 @@ char *longestPalindrome(char *s) {
     return strndup(s + bigen, maxlen + 1);
 }
 
-**/
+//**/
 
 //中心扩撒
 
