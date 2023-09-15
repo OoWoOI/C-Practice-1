@@ -1,14 +1,20 @@
 /*************************************************************************
-	> File Name: 02.打印字符串的位数.c
+	> File Name: 01.计算阶乘.c
 	> Author: 
 	> Mail: 
-	> Created Time: Wed 13 Sep 2023 09:39:47 PM CST
+	> Created Time: Fri 15 Sep 2023 10:03:05 PM CST
  ************************************************************************/
 
 #include<stdio.h>
+
+int func(int n) {
+    if (n == 1) return 1;
+    return n * func(n - 1);
+}
+
 int main() {
-    char str[1000];
-    scanf("%[^\n]s", str);
-    printf(" strlen is %d len\n", printf("%s", str));
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", func(n));
     return 0;
 }
