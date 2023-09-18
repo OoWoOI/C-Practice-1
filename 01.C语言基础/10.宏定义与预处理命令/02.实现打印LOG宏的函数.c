@@ -7,10 +7,19 @@
 
 #include<stdio.h>
 
+//条件式编译
+
+#ifdef DEBUG
+
 #define LOG(frm, arg...) {\
     printf("[%s : %s : %d] ", __FILE__, __func__, __LINE__);\
     printf(frm, ##arg);\
 }
+
+#else 
+#define LOG(frm, arg...)
+
+#endif
 
 int main() {
     LOG("hello word!\n");
