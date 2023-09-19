@@ -15,9 +15,24 @@
 #include<sys/types.h>
 #include<sys/stat.h>
 #include<fcntl.h>
+#include<dirent.h>
 
 //-----head file of users
+#include "../common/color.h"
+
+#ifdef _D
+#define DBG(frm, arg...) {\
+    printf("[%s : %s : %d]", __FILE__, __func__ ,__LINE__);\
+    printf(frm, ##arg);\
+}
+#else
+#define DBG(frm, arg...)
+#endif
+
 
 
 
 #endif
+
+
+
