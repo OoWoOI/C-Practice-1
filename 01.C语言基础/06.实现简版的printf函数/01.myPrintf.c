@@ -23,16 +23,14 @@ int myprintf(const char *frm, ...){
                 switch(frm[i + 1]) {
                     case 'd': {
                         int x = va_arg(arg, int);
-                        //if (x < 0) PUTC('-');
-                        //unsigned int temp = (unsigned int) x;
+                        if (x < 0) PUTC('-');
+                        unsigned int xx = (unsigned int) x;
                         int num[25] = {0};
-                        int flag = (x < 0 );
-                        
-                        while (x) {
-                            num[++num[0]] = (x % 10);
-                            x /= 10;
+                        while (xx){
+                            num[++num[0]] = (xx % 10);
+                            xx /= 10;
                         }
-                        flag && PUTC('-');
+                         
                         for (int k = num[0]; k >= 1; k--) {
                            PUTC(num[k] + '0'); 
                         }
