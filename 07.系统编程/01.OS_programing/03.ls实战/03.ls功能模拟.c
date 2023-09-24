@@ -12,6 +12,7 @@ int a_flag = 0;
 
 void do_ls(const char *name);
 
+
 int main(int argc, char *argv[]) {
     int opt;
     while ((opt = getopt(argc, argv, "al")) != -1) {
@@ -47,7 +48,18 @@ void do_ls(const char *name) {
     DBG("%s\n", name);
     DIR *dir = NULL;
     if ((dir = opendir(name)) == NULL) {
-        DBG("Open Error\n");  
+        DBG("Open Error\n"); 
+        //目录打开失败
+        if (access(name, R_OK) == 0) {
+            if (l_flag == 1) {
+                //是文件，输出
+                do_stat(name);
+            } else {
+                //不是文件，就输出目录名
+                printf("%s\n", name);
+            }
+        }
+
     } else {
         DBG("Open Success!\n");
     } 
