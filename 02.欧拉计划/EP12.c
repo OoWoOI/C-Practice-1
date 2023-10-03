@@ -1,9 +1,13 @@
 /*************************************************************************
-	> File Name: test.c
+	> File Name: EP12.c
 	> Author: 
 	> Mail: 
-	> Created Time: Wed 23 Aug 2023 09:46:07 PM CST
+	> Created Time: Tue 03 Oct 2023 09:19:21 PM CST
  ************************************************************************/
 
 #include<stdio.h>
+int main() {
 
+
+    return 0;
+}
