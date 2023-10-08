@@ -18,10 +18,11 @@
 #include<dirent.h>
 #include<pwd.h>
 #include<grp.h>
-
+#include<sys/select.h>
 
 //-----head file of users
-#include "../common/color.h"
+#include "color.h"
+#include "common.h"
 
 #ifdef _D
 #define DBG(frm, arg...) {\

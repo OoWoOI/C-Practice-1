@@ -2,35 +2,45 @@
 	> File Name: 385.海港.cpp
 	> Author: 
 	> Mail: 
-	> Created Time: Thu 05 Oct 2023 11:36:39 AM CST
+	> Created Time: Sun 08 Oct 2023 11:52:02 AM CST
  ************************************************************************/
 
 #include<iostream>
-#include<stdlib.h>
 #include<vector>
+#include<set>
+#include<queue>
 using namespace std;
 
-typedef struct boats {
-    int time;//到达时间
-    int *cnt; //国家种类
-}boats;
+struct person {
+    int t, c;
+};
+
+int nation[100005];
 
 int main() {
-    int n;
+    int n, con = 0;
     cin >> n;
-    boats *bt = (boats *)calloc(sizeof(boats), n);
-    
-    for (int i = 0; i < n; i++) {
-        cin >> bt[i].time;//到达时间    
-        int k;
-        cin >> k;//乘客总人数
-        bt[i].cnt = (int *)calloc(sizeof(int), k);
-        for (int j = 0; i < k; j++) cin >> bt[i].cnt[j];//乘客国籍
-    }
+    queue<person> que;
+    for (int i = 0; i < n; i++) { 
+        int t, num;
+        scanf("%d%d", &t, &num);
+        while (!que.empty()) {
+            person p = que.front();//获取队首元素
+            if (t - p.t < 86400) break;
+            que.pop();
+            nation[p.c]--;
+            if (nation[p.c] == 0) con--;
+        }
 
-    //统计情况
-    for (int i = 0; i < n; i++) {
-        
-    }
+        for (int i = 0; i < num; i++) {
+            int tmp;
+            scanf("%d", &tmp);
+            que.push({t, tmp});
+            if (nation[tmp] == 0) con++;
+            nation[tmp]++;
+        }
+        printf("%d\n", con);
+    };
+
     return 0;
 }
