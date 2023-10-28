@@ -18,6 +18,9 @@
 #include<errno.h>
 #include<sys/ioctl.h>
 #include<sys/mman.h>
+#include<dirent.h>
+#include<string.h>
+#include<ctype.h>
 
 //head file of usr
 
