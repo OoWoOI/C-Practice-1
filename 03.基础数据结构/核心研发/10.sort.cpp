@@ -91,10 +91,42 @@ void select_sort(int *num, int n) {
 }
 
 //快速排序
+void quick_sort(int *num, int l, int r) {
+    if (l > r) return ;
+    int x = l, y = r, tmp = num[l];
 
+    while (x < y) {
+        while (y > x && num[y] >= tmp) y--;
+        if (y > x) num[x++] = num[y];
+        while (x < y && num[x] <= tmp) x++;
+        if (x < y) num[y--] = num[x];
+    }
+    
+    num[x] = tmp;
+    quick_sort(num, l, x - 1);
+    quick_sort(num, x + 1, r);
+    return ;
+}
 
 //单边递归快排
-
+void quick_2_sort(int *num, int l, int r) {
+    while (l < r) {
+        int x = l, y = r, z = num[(l + r) >> 1];
+        do {
+            while (num[x] < z) x++;
+            while (num[y] > z) y--;
+          
+            if (x <= y) { 
+                swap(num[x], num[y]);
+                x++;
+                y--;
+            }   
+        } while (x <= y);
+        quick_2_sort(num, l, y);
+        l = x;
+    }
+    return ;
+}
 
 
 //数组输出
@@ -110,7 +142,7 @@ void output(int *num, int n) {
 
 int main() {
     srand(time(0));
-    #define max_n 20
+    #define max_n 19
     int arr[max_n];
     for (int i = 0; i < max_n; i++) {
         arr[i] = rand() % 100;
@@ -120,5 +152,8 @@ int main() {
     TEST(arr, insert_sort, max_n, max_n);
     TEST(arr, merge_sort, max_n, 0, max_n - 1);
     TEST(arr, insert_sort, max_n, max_n);
+    TEST(arr, quick_sort, max_n, 0, max_n - 1);
+    TEST(arr, quick_2_sort, max_n, 0, max_n - 1);
+    #undef max_n
     return 0;
 }
