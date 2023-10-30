@@ -21,7 +21,9 @@
 #include<dirent.h>
 #include<string.h>
 #include<ctype.h>
-
+#include<sys/wait.h>
+#include<sys/shm.h>
+#include<sys/ipc.h>
 //head file of usr
 
 
