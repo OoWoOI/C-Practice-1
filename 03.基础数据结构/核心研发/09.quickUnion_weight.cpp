@@ -9,32 +9,41 @@
 #include<stdlib.h>
 
 typedef struct UnionSet{
-    int *color;
+    int *father;
+    int *len;
     int size;
 }UnionSet;
 
 //初始化
 UnionSet *InitSet(int size){
     UnionSet *u = (UnionSet *)malloc(sizeof(UnionSet));
-    u->color = (int *)malloc(sizeof(int) * (size + 1));
+    u->father = (int *)malloc(sizeof(int) * (size + 1));
+    u->len = (int *)malloc(sizeof(int) * (size + 1));
     u->size = size + 1;
     for (int i = 0; i < u->size; i++) {
-        u->color[i] = i;
+        u->father[i] = i;
+        u->len[i] = 1;
     }
     return u;
 }
 
 //查找
 int find(UnionSet *u, int indx) {
-    return u->color[indx];
+    if (u->father[indx] == indx) return indx;
+    return find(u, u->father[indx]);
 }
 
 //合并
 int merge(UnionSet *u, int a, int b) {
-    if (find(u, a) == find(u, b)) return 0;
-    int acolor = find(u, a);
-    for (int i = 0; i < u->size; i++) {
-        if (find(u, i) == acolor) u->color[i] = u->color[b];
+    int fa = find(u, a), fb = find(u, b);
+    if (fa == fb) return 0;
+    
+    if (u->len[fa] > u->len[fb]) {
+        u->father[fb] = fa;
+        u->len[fa] += u->len[fb];
+    } else {
+        u->father[fa] = fb;
+        u->len[fb] += u->len[fa];
     }
 
     return 1;
@@ -43,7 +52,8 @@ int merge(UnionSet *u, int a, int b) {
 //销毁
 void freeSet(UnionSet *u) {
     if (u == NULL) return;
-    free(u->color);
+    free(u->father);
+    free(u->len);
     free(u);
     return ;
 }
@@ -62,7 +72,7 @@ int main() {
                 break;
             case 2:
                 printf("%s\n", find(u, b) ==find(u, c) ? "Yes" : "No");
-                
+                break;
         }
     }
     
