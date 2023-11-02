@@ -24,6 +24,10 @@
 #include<sys/wait.h>
 #include<sys/shm.h>
 #include<sys/ipc.h>
+#include<strings.h>
+#include<sys/msg.h>
+
+
 //head file of usr
 
 
