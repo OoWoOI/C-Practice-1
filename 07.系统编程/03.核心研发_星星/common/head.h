@@ -26,7 +26,7 @@
 #include<sys/ipc.h>
 #include<strings.h>
 #include<sys/msg.h>
-
+#include<sys/signal.h>
 
 //head file of usr
 
