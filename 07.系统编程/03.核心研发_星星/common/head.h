@@ -27,6 +27,7 @@
 #include<strings.h>
 #include<sys/msg.h>
 #include<sys/signal.h>
+#include<pthread.h>
 
 //head file of usr
 
