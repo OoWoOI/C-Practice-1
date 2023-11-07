@@ -28,6 +28,7 @@
 #include<sys/msg.h>
 #include<sys/signal.h>
 #include<pthread.h>
+#include<semaphore.h>
 
 //head file of usr
 
