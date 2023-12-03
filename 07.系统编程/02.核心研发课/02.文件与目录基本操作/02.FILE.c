@@ -5,7 +5,7 @@
 	> Created Time: Wed 04 Oct 2023 04:37:22 PM CST
  ************************************************************************/
 
-#include<head.h>
+#include "./common/head.h"
 
 int main(int argc, char *argv[]) {
     int opt;

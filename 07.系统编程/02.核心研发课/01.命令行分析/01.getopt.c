@@ -8,7 +8,7 @@
 #include<head.h>
 int main(int argc, char *argv[]) {
     int opt;
-    while ((opt = getopt(argc, argv, "ab:c::")) != -1) {
+    while ((opt = getopt(argc, argv, "ab:c:")) != -1) {
         switch (opt) {
             case 'a':
                 printf("opt a found!\n");
