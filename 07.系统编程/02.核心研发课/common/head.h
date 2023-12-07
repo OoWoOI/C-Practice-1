@@ -16,8 +16,9 @@
 #include<sys/stat.h>
 #include<fcntl.h>
 #include<string.h>
+#include<sys/time.h>
 
 //head file of user
-
+#include "common.h"
 
 #endif
