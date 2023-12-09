@@ -17,6 +17,7 @@
 #include<fcntl.h>
 #include<string.h>
 #include<sys/time.h>
+#include<sys/wait.h>
 
 //head file of user
 #include "common.h"
