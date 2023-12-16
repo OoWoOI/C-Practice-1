@@ -18,8 +18,13 @@
 #include<string.h>
 #include<sys/time.h>
 #include<sys/wait.h>
-
+#include<sys/ipc.h>
+#include<sys/shm.h>
+#include<errno.h>
+#include<sys/sem.h>
+#include<pthread.h>
 //head file of user
 #include "common.h"
+#include "my_popen.h"
 
 #endif
