@@ -23,8 +23,13 @@
 #include<errno.h>
 #include<sys/sem.h>
 #include<pthread.h>
+#include<sys/msg.h>
+
+
 //head file of user
 #include "common.h"
 #include "my_popen.h"
+#include "thread_pool.h"
+
 
 #endif
